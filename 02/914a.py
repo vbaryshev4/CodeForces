@@ -1,21 +1,25 @@
-	'''
+'''
     http://codeforces.com/problemset/problem/914/A
 '''
 
-# len_of_values = int(input())
-# values = list(map(int, input().split(' ')))
+len_of_values = int(input())
+values = list(map(int, input().split(' ')))
 
-# values = [4, 2]
-# values = [1, 2, 4, 8, 16, 32, 64, 576]
-values = [-1, -4, -9]
+def get_square(values):
+    maximum = -1000000
+    for value in values:
+        # print(value, (abs(value**(1/2)))%2)
+        if value < 0 and (abs(value**(1/2)) % 2) != 0.0 and maximum < value:
+                maximum = value
+        elif value > 0 and (abs(value**(1/2)) % 1) != 0.0 and maximum < value:
+            maximum = value
+    return maximum
 
-def get_square(value):
-    return abs(value)**(1/2)%2
+print(get_square(values))
 
-max_v = 0
-for v in values:
-    # print(v, -get_square(v))
-    if get_square(v) != 0:
-        max_v = v
+# 4 2
+# 1 2 4 8 16 32 64 576
+# -1 -4 -9
+# 994009 992109
 
-print(max_v)
+# wrong answer 1st numbers differ - expected: '992109', found: '994009'
