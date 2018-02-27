@@ -1,4 +1,4 @@
-'''
+	'''
     http://codeforces.com/problemset/problem/914/A
 '''
 
