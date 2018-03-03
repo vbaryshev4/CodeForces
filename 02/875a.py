@@ -1,6 +1,6 @@
 '''
     http://codeforces.com/problemset/problem/875/A
-    Работает, но долго на значении 100000001 
+    DONE 
 '''
 
 value = int(input())
@@ -10,7 +10,6 @@ def display(lst):
         print(item)
 
 def sum_a_string(integer):
-    # print(integer)
     return sum([int(d) for d in str(integer)])
 
 def make_all_nine(lenght):
@@ -40,7 +39,7 @@ def itter(value):
         display(possible_digits)
         return 
 
-    for num in range(value - d_max(value), value - 1):
+    for num in range(value - d_max(value), value):
         result = num + sum_a_string(num)
         if result == value:
             count += 1
