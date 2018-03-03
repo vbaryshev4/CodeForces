@@ -9,16 +9,38 @@ def display(lst):
     for item in sorted(lst):
         print(item)
 
-def sum_a_string(digit):
-    result = 0
-    for i in str(digit):
-        result+=int(i)
-    return result
+def sum_a_string(integer):
+    # print(integer)
+    return sum([int(d) for d in str(integer)])
 
-def get_sum(value):
+def make_all_nine(lenght):
+    return '9' * lenght
+
+def d_max(value):
+    svalue = str(value)
+    value_len = len(svalue)
+    first = svalue[0]
+
+    if value_len == 1:
+        return value
+
+    if first == '1':
+        return sum_a_string(int(make_all_nine(value_len - 1)))
+
+    nines_count = value_len - 1
+    first = str(int(first) - 1)
+    return sum_a_string(int(first + make_all_nine(nines_count)))
+
+def itter(value):
     count = 0
     possible_digits = []
-    for num in range(int(value/2),value):
+
+    if value == 1:
+        print(count)
+        display(possible_digits)
+        return 
+
+    for num in range(value - d_max(value), value - 1):
         result = num + sum_a_string(num)
         if result == value:
             count += 1
@@ -26,4 +48,5 @@ def get_sum(value):
     print(count)
     display(possible_digits)
 
-get_sum(value)
+itter(value)
+
