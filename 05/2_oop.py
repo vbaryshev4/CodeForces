@@ -1,31 +1,4 @@
-# Ввод
-# 6
-# APPOINT 1 12:30 30 2 andrey alex
-# APPOINT 1 12:00 30 2 alex sergey
-# APPOINT 1 12:59 60 2 alex andrey
-# PRINT 1 andrey
-# PRINT 1 sergey
-# PRINT 2 alex
-
-# Вывод
-# OK
-# OK
-# FAIL
-# alex andrey 
-# 12:30 30 andrey alex
-# 12:00 30 alex sergey
-
-requests = int(input())
-data = []
-
-i = 0
-while i != requests:
-    values = list(map(str, input().split(' ')))
-    data.append(values)
-    i += 1
-
 class Calendar(object):
-    """docstring for Calendar"""
     def __init__(self):
         self.calendar = {}
 
@@ -88,13 +61,43 @@ class Calendar(object):
             print(' '.join([time, str(end - start)] + names))
 
 
-def itter(data):
+class Data(object):
+    def __init__(self):
+        self.data = []
+        
+requests = int(input())
+d = Data()
+
+i = 0
+while i != requests:
+    values = list(map(str, input().split(' ')))
+    d.data.append(values)
+    i += 1
+
+def itter(cls):
     cal = Calendar()
-    for item in data:
+    for item in cls.data:
         if item[0] == 'APPOINT':
             cal.appoint(item[1:])
         elif item[0] == 'PRINT':
             cal.display(item[1:])
 
+itter(d)
 
-itter(data)
+
+# Ввод
+# 6
+# APPOINT 1 12:30 30 2 andrey alex
+# APPOINT 1 12:00 30 2 alex sergey
+# APPOINT 1 12:59 60 2 alex andrey
+# PRINT 1 andrey
+# PRINT 1 sergey
+# PRINT 2 alex
+
+# Вывод
+# OK
+# OK
+# FAIL
+# alex andrey 
+# 12:30 30 andrey alex
+# 12:00 30 alex sergey
